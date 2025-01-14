@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:online_lecture_smwu/screen/column_practice_screen.dart';
-import 'package:online_lecture_smwu/screen/column_screen.dart';
-import 'package:online_lecture_smwu/screen/container_practice_screen.dart';
-import 'package:online_lecture_smwu/screen/container_screen.dart';
-import 'package:online_lecture_smwu/screen/row_screen.dart';
+import 'package:online_lecture_smwu/screen/column/column_practice_screen.dart';
+import 'package:online_lecture_smwu/screen/column/column_screen.dart';
+import 'package:online_lecture_smwu/screen/container/container_practice_screen.dart';
+import 'package:online_lecture_smwu/screen/container/container_screen.dart';
+import 'package:online_lecture_smwu/screen/row/row_screen.dart';
 
 class ButtonScreen extends StatelessWidget {
   const ButtonScreen({super.key});

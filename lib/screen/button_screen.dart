@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_lecture_smwu/screen/column_screen.dart';
+import 'package:online_lecture_smwu/screen/container_practice_screen.dart';
 import 'package:online_lecture_smwu/screen/container_screen.dart';
 import 'package:online_lecture_smwu/screen/row_screen.dart';
 
@@ -25,6 +26,19 @@ class ButtonScreen extends StatelessWidget {
                   ));
                 },
                 child: Text("Container")),
+            SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  // 화면 이동 Navigator
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return ContainerPracticeScreen();
+                    },
+                  ));
+                },
+                child: Text("Container 실습")),
             SizedBox(
               height: 10,
             ),

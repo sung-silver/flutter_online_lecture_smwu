@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_lecture_smwu/screen/advanced/column_row_advanced.dart';
 import 'package:online_lecture_smwu/screen/column/column_practice_screen.dart';
 import 'package:online_lecture_smwu/screen/column/column_screen.dart';
 import 'package:online_lecture_smwu/screen/container/container_practice_screen.dart';
@@ -89,6 +90,18 @@ class ButtonScreen extends StatelessWidget {
                   ));
                 },
                 child: Text("Row 실습")),
+            SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return ColumnRowAdvanced();
+                    },
+                  ));
+                },
+                child: Text("Column, Row 심화")),
           ],
         ),
       ),

@@ -1,0 +1,7 @@
+* SingleChildScrollView와 ListView의 차이
+
+SingleChildScrollView에는 child -> Column, ListView에는 children
+
+차이점 : 렌더링(화면을 그리는 것) 방식에 큰 차이가 있음.
+- SingleChildScrollView : 자식 요소를 한 번에 모두 그림 -> 메모리/성능 문제 발생
+- ListView : 특정 영역만 그림 -> 리스트 요소가 많을 때 사용

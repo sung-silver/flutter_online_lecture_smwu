@@ -1,8 +1,36 @@
 import 'collections.dart';
+import 'oop/person.dart';
+import 'oop/product.dart';
 
 void main() {
-  Collections collections = Collections();
-  collections.setPractice();
+  // Collections collections = Collections();
+  // collections.setPractice();
+
+  Person person1 = Person('으나', 25, 50.0);
+  print('person1 : $person1');
+
+  String talk1 = person1.talk('김연아');
+  print(talk1);
+
+  /// Person List 변수를 만드세요.
+  /// 변수에 Person 인스턴스 3개를 추가하세요.
+  List<Person> personList = [];
+  personList.add(Person('이름1', 30, 60));
+  personList.add(Person('이름2', 40, 70));
+  personList.add(Person('이름3', 50, 80));
+
+  var talk2 = personList[1].talk(personList[0].name);
+  print(talk2);
+
+  Product product = Product(name: '라떼', company: '스타벅스', price: 3000);
+
+  // var product = Product('아메리카노', '스타벅스');
+  // print(product);
+  // product.sale();
+  // product.sale();
+  // print(product);
+
+
 }
 
 void variableTest() {

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-
+import 'member_detail_screen.dart';
 import 'model/MemberModel.dart';
 
 class MemberListScreen extends StatefulWidget {
@@ -11,20 +11,21 @@ class MemberListScreen extends StatefulWidget {
 }
 
 class _MemberListScreenState extends State<MemberListScreen> {
-  Dio dio =
-      Dio(BaseOptions(baseUrl: "https://244b-110-8-126-227.ngrok-free.app"));
+  Dio dio = Dio(
+      BaseOptions(baseUrl: "https://244b-110-8-126-227.ngrok-free.app"));
   bool loading = true;
   List<MemberModel> dataList = [];
 
   @override
   void initState() {
     // TODO: implement initState
-    getDate();
+    getData();
     super.initState();
   }
 
-  Future<void> getDate() async {
+  Future<void> getData() async {
     Response response = await dio.get("/api/v1/member/all");
+    await Future.delayed(Duration(seconds: 1));
 
     /// as: casting
     /// Iterable: repeative data
@@ -50,14 +51,58 @@ class _MemberListScreenState extends State<MemberListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("member list")),
-      body: loading
-          ? CircularProgressIndicator()
-          : SingleChildScrollView(
-              child: Column(
-                children: [Text(dataList.toString())],
-              ),
-            ),
+        appBar: AppBar(title: Text("member list")),
+        body: loading
+            ? Center(child: CircularProgressIndicator())
+        // : memberListView()
+            : memberListView());
+  }
+
+  /// 1. ListView
+  Widget memberListView() {
+    return ListView.builder(
+        itemCount: dataList.length,
+        padding: EdgeInsets.symmetric(vertical: 12),
+        itemBuilder: (context, index) {
+          return InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return MemberDetailScreen(email: dataList[index].email);
+                }));
+              },
+              child: item(dataList[index]));
+        });
+  }
+
+  /// 2. SingleChildScrollView
+  Widget memberSingle() {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          ...List.generate(dataList.length, (index) {
+            return item(dataList[index]);
+          })
+        ],
+      ),
+    );
+  }
+
+  Widget item(MemberModel member) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "이메일 : ${member.email}",
+            style: TextStyle(fontSize: 15),
+          ),
+          Text(
+            "설명 : ${member.description}",
+            style: TextStyle(fontSize: 15),
+          ),
+        ],
+      ),
     );
   }
 }

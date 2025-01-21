@@ -67,7 +67,7 @@ class _MemberListScreenState extends State<MemberListScreen> {
           return InkWell(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return MemberDetailScreen(email: dataList[index].email);
+                  return MemberDetailScreen(email: dataList[index].email, dio: dio);
                 }));
               },
               child: item(dataList[index]));

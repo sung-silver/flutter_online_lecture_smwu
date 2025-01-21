@@ -1,9 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class MemberDetailScreen extends StatefulWidget {
-  const MemberDetailScreen({required this.email, super.key});
+  const MemberDetailScreen({required this.email, required this.dio, super.key});
 
   final String email;
+  final Dio dio;
 
   @override
   State<MemberDetailScreen> createState() => _MemberDetailScreenState();
@@ -13,6 +15,21 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
   final idController = TextEditingController();
   final pwController = TextEditingController();
   final descriptionController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    idController.text = widget.email;
+    widget.dio.post("/api/v1/member/find-one", data: {
+      "email": widget.email,
+      "password": "abcd",
+    }).then((value) {
+      /// value = {id: 14, email: abcd@naver.com, password: abcd, description: }
+      pwController.text = value.data["password"];
+      descriptionController.text = value.data["description"];
+    });
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -33,6 +50,7 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextFormField(
+              readOnly: true,
               controller: idController,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(hintText: "이메일을 입력해주세요."),

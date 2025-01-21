@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-class NetworkRegisterScreen extends StatefulWidget {
-  const NetworkRegisterScreen({super.key});
+class MemberRegisterScreen extends StatefulWidget {
+  const MemberRegisterScreen({super.key});
 
   @override
-  State<NetworkRegisterScreen> createState() => _NetworkRegisterScreenState();
+  State<MemberRegisterScreen> createState() => _NetworkRegisterScreenState();
 }
 
-class _NetworkRegisterScreenState extends State<NetworkRegisterScreen> {
+class _NetworkRegisterScreenState extends State<MemberRegisterScreen> {
   final TextEditingController idController = TextEditingController();
   final TextEditingController pwController = TextEditingController();
 

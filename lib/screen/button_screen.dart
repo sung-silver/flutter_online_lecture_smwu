@@ -4,6 +4,7 @@ import 'package:online_lecture_smwu/screen/column/column_screen.dart';
 import 'package:online_lecture_smwu/screen/container/container_practice_screen.dart';
 import 'package:online_lecture_smwu/screen/container/container_screen.dart';
 import 'package:online_lecture_smwu/screen/image/image_screen.dart';
+import 'package:online_lecture_smwu/screen/network/network_screen.dart';
 import 'package:online_lecture_smwu/screen/row/row_practice_screen.dart';
 import 'package:online_lecture_smwu/screen/row/row_screen.dart';
 import 'package:online_lecture_smwu/screen/text/text_practice_screen.dart';
@@ -203,6 +204,14 @@ class ButtonScreen extends StatelessWidget {
                     }));
                   },
                   child: Text('todo-list')),
+              SizedBox(height: 10),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return NetworkScreen();
+                    }));
+                  },
+                  child: Text('network screen')),
             ],
           ),
         ),

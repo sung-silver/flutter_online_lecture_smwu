@@ -42,6 +42,10 @@ class _NetworkRegisterScreenState extends State<NetworkRegisterScreen> {
                 dio.post("/api/v1/member", data: {
                   "email": idController.text,
                   "password": pwController.text
+                }).then((value) { // response
+                  if(value.statusCode.toString() == "201") {
+                    Navigator.pop(context);
+                  }
                 });
               },
               child: Text("회원가입"))

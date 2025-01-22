@@ -22,7 +22,7 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
     idController.text = widget.email;
     widget.dio.post("/api/v1/member/find-one", data: {
       "email": widget.email,
-      "password": "abcd",
+      "password": "hihihi",
     }).then((value) {
       /// value = {id: 14, email: abcd@naver.com, password: abcd, description: }
       pwController.text = value.data["password"];
@@ -68,7 +68,22 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
               height: 10,
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  Response response =
+                      await widget.dio.patch("/api/v1/member/update", data: {
+                    "email": widget.email,
+                    "password": pwController.text,
+                    "description": descriptionController.text,
+                  });
+                  if (response.statusCode == 200) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text("성공"),
+                    ));
+
+                    await Future.delayed(Duration(seconds: 1));
+                    Navigator.pop(context, true);
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                     fixedSize: Size(double.infinity, 50)),
                 child: Text("update")),
@@ -76,7 +91,21 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
               height: 10,
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  Response response =
+                      await widget.dio.delete("/api/v1/member/delete", data: {
+                    "email": widget.email,
+                    "password": pwController.text,
+                  });
+
+                  // 204: Content가 없다
+                  if (response.statusCode == 204) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("delete success")));
+                    await Future.delayed(Duration(seconds: 1));
+                    Navigator.pop(context, true);
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                     fixedSize: Size(double.infinity, 50)),
                 child: Text("delete")),

@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:online_lecture_smwu/screen/state_management/notifier/notifier_view_model.dart';
 
+import 'notifier_second_screen.dart';
+
 class NotifierScreen extends StatefulWidget {
   const NotifierScreen({super.key});
 
@@ -47,7 +49,17 @@ class _NotifierScreenState extends State<NotifierScreen> {
               onPressed: () {
                 vm.countUp();
               },
-              child: Text("Count Up"))
+              child: Text("Count Up")),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return const NotifierSecondScreen();
+                },
+              ));
+            },
+            child: const Text("화면이동"),
+          ),
         ],
       ),
     );

@@ -11,6 +11,7 @@ import 'package:online_lecture_smwu/screen/network/network_screen.dart';
 import 'package:online_lecture_smwu/screen/pageview/page_view_screen.dart';
 import 'package:online_lecture_smwu/screen/row/row_practice_screen.dart';
 import 'package:online_lecture_smwu/screen/row/row_screen.dart';
+import 'package:online_lecture_smwu/screen/state_management/state_management_screen.dart';
 import 'package:online_lecture_smwu/screen/tabbar/tab_bar_screen.dart';
 import 'package:online_lecture_smwu/screen/text/text_practice_screen.dart';
 import 'package:online_lecture_smwu/screen/text/text_screen.dart';
@@ -284,6 +285,15 @@ class ButtonScreen extends StatelessWidget {
                         }));
                   },
                   child: Text('bottom sheet screen')),
+              SizedBox(height: 10),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                          return StateManagementScreen();
+                        }));
+                  },
+                  child: Text('state management screen')),
             ],
           ),
         ),

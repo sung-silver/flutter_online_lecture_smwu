@@ -1,0 +1,16 @@
+- GetX 활용
+
+MyController에서 count라는 int타입 변수를 static으로 가지고 있다
+MyController에서 count 값을 변경하는 함수를 호출하면 GetXScreen과
+GetXSecondScreen에서 보여주는 count값이 업데이트 된다
+
+
+- 아래 코드가 get에서의 핵심임
+Obx(() {
+    return Center(
+    child: Text(
+        MyController.to.count.value.toString(),
+        style: TextStyle(fontSize: 25),
+        ),
+    );
+}),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:online_lecture_smwu/screen/state_management/notifier/notifier_screen.dart';
 import 'package:online_lecture_smwu/screen/state_management/provider/provider_screen.dart';
 
 import 'get/get_x_screen.dart';
@@ -35,6 +36,16 @@ class StateManagementScreen extends StatelessWidget {
               ));
             },
             child: const Text("Provider"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return const NotifierScreen();
+                },
+              ));
+            },
+            child: const Text("Notifier"),
           ),
         ],
       ),

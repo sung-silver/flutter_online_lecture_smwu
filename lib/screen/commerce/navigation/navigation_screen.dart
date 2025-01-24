@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_lecture_smwu/screen/commerce/cart/cart_screen.dart';
 import 'package:online_lecture_smwu/screen/commerce/cart/cart_view_model.dart';
+import 'package:online_lecture_smwu/screen/commerce/category/category_screen.dart';
 import 'package:online_lecture_smwu/screen/commerce/home/home_screen.dart';
 
 class NavigationScreen extends StatefulWidget {
@@ -33,7 +34,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
         index: currentIndex,
         children: [
           HomeScreen(),
-          Container(color: Colors.blue),
+          CategoryScreen(),
           CartScreen(),
         ],
       ),

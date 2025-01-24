@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:online_lecture_smwu/screen/commerce/cart/cart_view_model.dart';
+import 'package:online_lecture_smwu/screen/commerce/home/widgets/product_grid.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -8,8 +10,33 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  CartViewModel vm = CartViewModel.instance;
+  VoidCallback? listener;
+
+  @override
+  void initState() {
+    listener = () {
+      setState(() {});
+    };
+    vm.addListener(listener!);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    vm.removeListener(listener!);
+    listener = null;
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox();
+    return ProductGrid(
+      productList: vm.cartList,
+      scroll: true,
+      onPressed: (productModel) {
+        vm.removeProduct(productModel);
+      },
+    );
   }
 }

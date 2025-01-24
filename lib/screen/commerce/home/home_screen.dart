@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:online_lecture_smwu/screen/commerce/cart/cart_view_model.dart';
 import 'package:online_lecture_smwu/screen/commerce/home/widgets/home_image.dart';
 import 'package:online_lecture_smwu/screen/commerce/home/widgets/home_short_cut.dart';
 import 'package:online_lecture_smwu/screen/commerce/home/widgets/home_subtitle.dart';
 import 'package:online_lecture_smwu/screen/commerce/home/widgets/product_grid.dart';
 import 'package:online_lecture_smwu/screen/commerce/home/widgets/product_horizontal.dart';
+import 'package:online_lecture_smwu/screen/commerce/util.dart';
 
 import '../assets_path.dart';
 import '../model/product_model.dart';
@@ -91,7 +93,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ProductGrid(
           productList: newProduct,
           scroll: false,
-          onPressed: (productModel) {},
+          onPressed: (productModel) {
+            CartViewModel.instance.addProduct(productModel);
+          },
         ),
         SizedBox(height: 80),
       ],

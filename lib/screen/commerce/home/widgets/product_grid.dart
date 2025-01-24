@@ -6,7 +6,7 @@ class ProductGrid extends StatelessWidget {
   const ProductGrid({required this.productList, required this.scroll, required this.onPressed, super.key});
 
   final List<ProductModel> productList;
-  final bool scroll;
+  final bool scroll; // 스크롤 가능 여부
   final Function(ProductModel productModel) onPressed;
 
   @override

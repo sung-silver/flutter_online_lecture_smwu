@@ -29,6 +29,7 @@ import 'package:online_lecture_smwu/screen/todo/todo_list.dart';
 import 'package:online_lecture_smwu/screen/ui_exam.dart';
 
 import 'advanced/column_row_advanced.dart';
+import 'commerce/navigation/navigation_screen.dart';
 
 class ButtonScreen extends StatelessWidget {
   const ButtonScreen({super.key});
@@ -43,6 +44,17 @@ class ButtonScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              ElevatedButton(
+                  onPressed: () {
+                    // 화면 이동 Navigator
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return const NavigationScreen();
+                      },
+                    ));
+                  },
+                  child: const Text("Commerce")),
+              const SizedBox(height: 10),
               ElevatedButton(
                   onPressed: () {
                     // 화면 이동 Navigator

@@ -26,6 +26,7 @@ import 'package:online_lecture_smwu/screen/stateful/stateful_screen.dart';
 import 'package:online_lecture_smwu/screen/stateless/stateless_screen.dart';
 import 'package:online_lecture_smwu/screen/text_form_field/text_form_field_screen.dart';
 import 'package:online_lecture_smwu/screen/todo/todo_list.dart';
+import 'package:online_lecture_smwu/screen/ui_exam.dart';
 
 import 'advanced/column_row_advanced.dart';
 
@@ -294,6 +295,16 @@ class ButtonScreen extends StatelessWidget {
                         }));
                   },
                   child: Text('state management screen')),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return const UiExam();
+                      },
+                    ));
+                  },
+                  child: const Text("UiExam")),
             ],
           ),
         ),
